@@ -1,9 +1,16 @@
 output "instance_public_ip" {
-    value = aws_instance.this.public_ip
-    sensitive = false
+  description = "Public IP of the Grafana EC2 instance"
+  value       = aws_instance.grafana.public_ip
 }
 
 output "grafana_url" {
-    value = "http://${aws_instance.this.public_ip}:3000/"
-    sensitive = false
+  description = "Grafana URL"
+  value       = "http://${aws_instance.grafana.public_ip}:3000/"
+}
+
+output "instance_id" {
+  value = aws_instance.grafana.id
+}
+output "public_dns" {
+  value = aws_instance.grafana.public_dns
 }
