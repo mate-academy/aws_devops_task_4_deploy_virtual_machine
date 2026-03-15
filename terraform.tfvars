@@ -1,2 +1,5 @@
-subnet_id = ""
-security_group_id = ""
+subnet_id               = "subnet-03d81465b2a3445fb"
+security_group_id       = "sg-0064fabf60f85980b"
+instance_type           = "t2.micro"
+path_to_public_key      = "~/.ssh/id_rsa.pub"
+path_to_cloud-init_file = "./install-grafana.sh"
