@@ -1,0 +1,73 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.16.2",
+  "configuration": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "data.aws_ami.this",
+          "mode": "data",
+          "type": "aws_ami",
+          "name": "this",
+          "provider_config_key": "aws",
+          "schema_version": 0
+        },
+        {
+          "address": "aws_key_pair.this",
+          "mode": "managed",
+          "type": "aws_key_pair",
+          "name": "this",
+          "provider_config_key": "aws",
+          "schema_version": 1
+        },
+        {
+          "address": "aws_instance.this",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "this",
+          "provider_config_key": "aws",
+          "schema_version": 1
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "aws_key_pair.this",
+      "mode": "managed",
+      "type": "aws_key_pair",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "key_name": "mate-aws-grafana-lab-key"
+        }
+      }
+    },
+    {
+      "address": "aws_instance.this",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "ami": "ami-0abcdef1234567890",
+          "instance_type": "t2.micro",
+          "associate_public_ip_address": true,
+          "subnet_id": "subnet-0123456789abcdef0",
+          "vpc_security_group_ids": ["sg-0123456789abcdef0"],
+          "key_name": "mate-aws-grafana-lab-key",
+          "user_data": "local-mock-user-data-for-tests",
+          "tags": {
+            "Name": "mate-aws-grafana-lab"
+          }
+        }
+      }
+    }
+  ]
+}
