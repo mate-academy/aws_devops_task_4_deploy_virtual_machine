@@ -1,2 +1,2 @@
-subnet_id         = "subnet-0abcdef1234567890"
-security_group_id = "sg-0abcdef1234567890"
+subnet_id         = "subnet-0520b96455a53749f"
+security_group_id = "sg-0daac62bf0724fb3f"
