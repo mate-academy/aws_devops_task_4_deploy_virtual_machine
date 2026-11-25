@@ -1,0 +1,76 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.9.8",
+  "configuration": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "data.aws_ami.this",
+          "mode": "data",
+          "type": "aws_ami",
+          "name": "this",
+          "provider_config_key": "aws"
+        },
+        {
+          "address": "aws_key_pair.this",
+          "mode": "managed",
+          "type": "aws_key_pair",
+          "name": "this",
+          "provider_config_key": "aws"
+        },
+        {
+          "address": "aws_instance.this",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "this",
+          "provider_config_key": "aws"
+        }
+      ]
+    }
+  },
+  "resource_changes": [
+    {
+      "address": "aws_key_pair.this",
+      "mode": "managed",
+      "type": "aws_key_pair",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "key_name": "mate-aws-grafana-lab",
+          "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzKqQ0FZB+O8Pyw1NXs+MNJuloVsWgpr8j/x4qXFy7v nnazarka@Nazar"
+        }
+      }
+    },
+    {
+      "address": "aws_instance.this",
+      "mode": "managed",
+      "type": "aws_instance",
+      "name": "this",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": ["create"],
+        "before": null,
+        "after": {
+          "ami": "ami-placeholder",
+          "instance_type": "t2.micro",
+          "associate_public_ip_address": true,
+          "subnet_id": "subnet-0abcdef1234567890",
+          "vpc_security_group_ids": [
+            "sg-0abcdef1234567890"
+          ],
+          "key_name": "mate-aws-grafana-lab",
+          "user_data": "#!/bin/bash\nwget -q -O gpg.key https://rpm.grafana.com/gpg.key\nsudo rpm --import gpg.key\nyum install grafana -y\nsystemctl start grafana-server\nsystemctl enable grafana-server.service\n",
+          "tags": {
+            "Name": "mate-aws-grafana-lab"
+          },
+          "tags_all": {
+            "Name": "mate-aws-grafana-lab"
+          }
+        }
+      }
+    }
+  ]
+}
